@@ -1,5 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
 export interface Props {
 	title: string;
 	// make noTitle optional and default to false
@@ -19,22 +20,11 @@ const { title, noTitle } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col min-h-screen justify-center px-2 sm:px-16 w-full max-w-6xl bg-zinc-50 dark:bg-black">
-		<!-- sticky header at the top -->
-		<header class="flex justify-between items-center py-4 text-zinc-600 dark:text-zinc-400">
-			<!-- afficher le h1 que si on est pas sur index -->
-			{noTitle ? null : <h1>Maxence Lavenu</h1>}
-
-			<nav>
-				<a href="/">Home</a>
-				<a href="/about">About</a>
-				<!-- <a href="/blog">Blog</a> -->
-				<a href="/works">Projets</a>
-			</nav>
-		</header>
-		<div class="flex flex-col flex-1 text-zinc-600 dark:text-zinc-400 mb-4 w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20 ">
+	<body class="flex flex-col min-h-screen justify-center px-2 sm:px-16 mx-auto w-full max-w-6xl bg-gray-50 dark:bg-gray-950">
+		<Navbar/>
+		<div class="flex flex-col flex-1 text-gray-600 dark:text-gray-400 mb-4 w-full bg-white border border-gray-100 dark:bg-gray-900 dark:border-gray-300/20 drop-shadow-lg dark:drop-shadow-none rounded">
 			<!-- add rounded bottom radius -->
-			<main class="flex-1 px-4 py-8 sm:px-16 sm:py-16 w-full max-w-6xl mx-auto">
+			<main class="flex-1 px-4 py-8 sm:px-16 sm:py-8 w-full max-w-6xl mx-auto">
 				<slot />
 			</main>
 			<Footer/>
