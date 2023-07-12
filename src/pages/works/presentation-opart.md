@@ -26,7 +26,7 @@ J’ai codé deux grilles : une de 25 carrés sur 25 carrés pour contenir les g
 
 A chaque touche du clavier est assignée une fonction pour changer l’oeuvre, avec la palette de couleur sur les nombres (barre sur le clavier et pavé numérique).
 
-![Pre%CC%81sentation%20OpArt%203ec25e428f68498b835852274b3b98be/instructionsVasarely-1.png](Pre%CC%81sentation%20OpArt%203ec25e428f68498b835852274b3b98be/instructionsVasarely-1.png)
+<!-- ![Pre%CC%81sentation%20OpArt%203ec25e428f68498b835852274b3b98be/instructionsVasarely-1.png](Pre%CC%81sentation%20OpArt%203ec25e428f68498b835852274b3b98be/instructionsVasarely-1.png) -->
 
 L’utilisateur peut donc faire son oeuvre personnelle soit en utilisant les touches du clavier pour les actions qu’elles fournissent soient en tapant sur des touches au hasard, pour obtenir une oeuvre plus « chaotique ».
 
