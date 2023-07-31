@@ -8,7 +8,7 @@ export default defineConfig({
   experimental: {
     assets: true
   },
-  site: 'https://maxencelav.github.io',
-  base: '/dotpro',
+  site: 'https://maxencelav.dev',
+  base: '/',
   integrations: [tailwind(), mdx()]
 });
