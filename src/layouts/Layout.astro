@@ -1,13 +1,15 @@
 ---
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
+
 export interface Props {
 	title: string;
 	// make noTitle optional and default to false
 	noTitle?: boolean;
+	containerClasses?: string;
 }
 
-const { title, noTitle } = Astro.props;
+const { title, noTitle, containerClasses } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -20,14 +22,17 @@ const { title, noTitle } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col min-h-screen justify-center px-2 sm:px-16 mx-auto w-full max-w-6xl bg-gray-50 dark:bg-gray-950">
+	<body class="flex flex-col min-h-screen justify-center mx-auto w-full bg-gray-50 dark:bg-gray-950 overflow-x-hidden">
 		<Navbar/>
-		<div class="flex flex-col flex-1 text-gray-600 dark:text-gray-400 mb-4 w-full bg-white border border-gray-100 dark:bg-gray-900 dark:border-gray-300/20 drop-shadow-lg dark:drop-shadow-none rounded">
+		<img src="/assets/img/gradient.svg" class="-bottom-1/3 -right-1/3 object-cover z-10 w-screen opacity-0 dark:opacity-25 fixed"/>
+
+		<div class="flex flex-col text-gray-600 dark:text-gray-400 mb-4 grow max-w-6xl mx-auto px-2 z-20 sm:px-16">
 			<!-- add rounded bottom radius -->
-			<main class="flex-1 px-4 py-8 sm:px-16 sm:py-8 w-full max-w-6xl mx-auto">
+			<main class={containerClasses + " " +"grow px-4 py-8 sm:px-16 sm:py-8 w-full max-w-6xl mx-auto"}>
 				<slot />
 			</main>
 			<Footer/>
 		</div>
+
 	</body>
 </html>

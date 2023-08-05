@@ -7,13 +7,13 @@ const allWorks = await Astro.glob('../pages/works/*.mdx');
 import mlPortrait from "/public/assets/img/portrait.png";
 ---
 
-<Layout title="Maxence Lavenu" noTitle>
+<Layout title="Maxence Lavenu" containerClasses="flex align-center">
 
 	<!-- petite forme floue à la tailwind avec ma tête à gauche -->
 		
 		<div class="flex flex-col md:flex-row items-center justify-between gap-8">
 			<div class="basis-2/3">
-				<h1 class="text-5xl font-bold mb-4 text-gray-950 dark:text-gray-50">Je suis <span class="text-blue-500">Maxence Lavenu</span></h1>
+				<h1 class="text-5xl font-bold mb-4 text-gray-950 dark:text-gray-50">Bonjour ! 👋</h1>
 				<p class="mb-3 text-base/7">Détenteur d’un titre d'<strong>Analyste développeur d'applications informatiques</strong> (obtenu à la <a href="https://codingfactory.fr/" target="_blank">Coding Factory by ESIEE-IT</a>), je suis actuellement développeur front-end chez <a href="https://vittascience.com/" target="_blank">Vittascience</a>.</p>
 				
 				<div class="flex flex-col md:flex-row gap-4">
@@ -22,36 +22,8 @@ import mlPortrait from "/public/assets/img/portrait.png";
 				</div>
 			</div>
 			<div class="basis-1/3 max-w-1/2 md:max-w-none">
-				<Image src={mlPortrait} alt="Maxence Lavenu" class="rounded-full h-full w-full object-cover" width="384" height="384" />
+				<Image src={mlPortrait} alt="Maxence Lavenu" class="rounded-full h-full w-full object-cover select-none" width="384" height="384" />
 			</div>
 		</div>
-
-		<hr class="border-0 bg-blue-500 h-1 w-1/2 rounded-full mx-auto my-8">
-
-		<!-- liste de derniers travaux -->
-		<h2 class="text-3xl text-gray-950 dark:text-gray-50 font-bold mb-4">Mes derniers travaux/expériences professionelles</h2>
-		<ul>
-			<!-- request all works in /pages/works and display them in li elts -->
-			{allWorks.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
-		</ul>
-
-		<!-- liste de derniers blogposts -->
-
-		<h2 class="text-3xl text-gray-950 dark:text-gray-50 font-bold mb-4 mt-8">Mes derniers articles</h2>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum blandit nulla at molestie. Suspendisse posuere, ex eget tincidunt hendrerit, libero metus fringilla sem, eu facilisis urna arcu non lectus. Duis eu ultrices felis, ut rhoncus orci. Maecenas eget est blandit, faucibus neque id, vehicula purus. Suspendisse sed volutpat metus. Nulla fringilla tempus odio, in tristique augue laoreet lobortis. Nunc semper quam metus, ut elementum enim tincidunt vel. Pellentesque urna metus, placerat vitae dapibus in, efficitur et lorem. Aenean fringilla cursus hendrerit. Ut vel malesuada augue. Donec semper lacus ac nisl blandit tristique. Proin mi dolor, eleifend eu volutpat vel, imperdiet sed lacus.
-
-			Duis interdum, sem fermentum ullamcorper semper, urna lorem euismod risus, quis feugiat nunc orci eget mi. Maecenas libero lectus, efficitur et est ut, egestas tempor ipsum. Quisque sed lacus dolor. Phasellus tincidunt leo lacinia, mattis est condimentum, lacinia ipsum. Cras commodo et dui eget elementum. Sed sed aliquet velit, a ullamcorper eros. Duis egestas mi luctus ultricies porttitor. Morbi feugiat ligula eu finibus porta. Proin id elit lorem. Aenean orci ligula, volutpat eu dui vel, viverra lobortis magna. Nullam dui metus, elementum ac semper eu, finibus in ipsum. Ut ac bibendum dolor. In hac habitasse platea dictumst. Nullam sed metus eget neque mattis sagittis.
-
-			Ut nec ipsum eu risus tincidunt ultrices. Pellentesque suscipit dolor vel magna lacinia, sit amet auctor nisl volutpat. Nam iaculis laoreet varius. Curabitur convallis maximus mollis. Vivamus finibus non lectus in mattis. Aenean id metus venenatis, congue risus quis, interdum dui. Suspendisse potenti.
-
-			Mauris ornare ultrices auctor. Nam ac lectus eleifend, vestibulum lacus sit amet, efficitur massa. Donec pretium nec purus scelerisque varius. Nunc pellentesque, turpis sed rutrum egestas, ex mi consequat enim, nec pharetra nisi est eget lacus. Praesent a consectetur nisi, pulvinar consectetur enim. Pellentesque cursus nibh eu scelerisque imperdiet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean egestas, sapien eu facilisis consequat, quam mi pretium sapien, congue molestie metus lacus sagittis tellus.
-
-			Pellentesque ultricies viverra diam, vel tempus lacus rhoncus id. Aliquam sed ultricies est. Vivamus bibendum congue nibh, nec dignissim nulla suscipit non. Nunc lobortis lorem quis finibus suscipit. Aenean porttitor congue enim, nec rutrum elit rhoncus quis. Proin maximus, enim eget volutpat bibendum, sapien augue tempus enim, ac efficitur lacus nisl sed tellus. Vivamus et nisl auctor, ultrices massa ultricies, laoreet mi. Suspendisse rutrum leo at imperdiet suscipit. Curabitur tincidunt imperdiet metus ut rutrum. Sed ullamcorper est at sagittis suscipit. Sed ac urna id lectus auctor tincidunt a ac mi.
-
-			Proin odio arcu, placerat a scelerisque et, euismod sit amet mi. Cras eget neque vel justo pulvinar porta. Quisque rutrum, leo eu condimentum mattis, augue ex euismod ipsum, ut consequat urna velit gravida erat. Donec quis elit mollis mi maximus cursus. Suspendisse potenti. Praesent egestas venenatis lacus, id luctus quam pretium non. Etiam consectetur orci ut facilisis lobortis. Integer in velit nisl. Morbi vulputate, ligula et ornare molestie, lectus nisl dictum sapien, in porttitor leo lorem id felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquam tortor eget sem sagittis, eget tristique mi finibus. Sed vitae dapibus libero. Vestibulum in commodo est. Praesent eget purus dapibus, egestas nisl vitae, placerat libero.
-
-			Donec nulla felis, euismod a magna euismod, feugiat aliquam mi. Nulla sollicitudin imperdiet faucibus. Nulla vitae rutrum ex. Vestibulum quis justo augue. Proin sodales vestibulum arcu, eget tincidunt arcu lobortis eget. Quisque mattis, augue sit amet mattis finibus, nunc diam egestas nisl, ac placerat diam neque id nibh. Sed aliquet justo eu facilisis malesuada. Mauris sollicitudin metus non luctus sodales. Pellentesque blandit nulla sed tellus lacinia feugiat. 
-		</p>
 </Layout>
 
