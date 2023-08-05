@@ -26,7 +26,7 @@ const { title, noTitle, containerClasses } = Astro.props;
 		<Navbar/>
 		<img src="/assets/img/gradient.svg" class="-bottom-1/3 -right-1/3 object-cover z-10 w-screen opacity-0 dark:opacity-25 fixed"/>
 
-		<div class="flex flex-col text-gray-600 dark:text-gray-400 mb-4 grow max-w-6xl mx-auto px-2 z-20 sm:px-16">
+		<div class="flex flex-col text-gray-600 dark:text-gray-400 grow max-w-6xl w-full mx-auto px-2 z-20 sm:px-16">
 			<!-- add rounded bottom radius -->
 			<main class={containerClasses + " " +"grow px-4 py-8 sm:px-16 sm:py-8 w-full max-w-6xl mx-auto"}>
 				<slot />
