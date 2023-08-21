@@ -1,0 +1,33 @@
+---
+layout: /src/layouts/MdxLayout.astro
+title: Cryptage
+publishDate: 2019-07-13
+description: Esse ex id fugiat sint est ea eiusmod esse minim. Aliqua laborum laboris amet magna voluptate dolore dolor. Lorem irure nostrud dolore aliquip dolore pariatur cupidatat fugiat laborum ullamco qui sunt. Et et dolore duis consectetur ea labore culpa.
+legacy: true
+---
+
+Ce programme a été réalisé en tant que projet final de ma classe d’**ICN**, en seconde.
+
+Le thème était « cacher du texte dans une image » – j’ai donc fait de la stéganographie en utilisant le langage **Python** pour permettre à un utilisateur d'ajouter un message dans une image.
+
+Comment m’y suis-je pris ?
+
+J’ai codé les valeurs ASCII des lettres du message dans les composantes rouges et vertes des premiers pixels de l’image – en utilisant la méthode du *least significant bit.*
+
+Prenons un pixel de l’image :
+- Sa composante rouge est égale à **1010 1101** en binaire – **173** en décimal.
+- Sa composante verte est égale à **1101 0001** en binaire – **216** en décimal.
+- Sa composante bleue est égale à **1110 0110** en binaire – **230** en décimal.
+
+Changer les 4 derniers bits d’une composante ne changera pas beaucoup la couleur du pixel. On va donc remplacer ces 4 derniers bits par ceux de l’information que l’on veut dissimuler !
+
+Chaque caractère est codé par un octet : par exemple « A » est codé par **0100 0001** en binaire – **65** en décimal. Il faudra donc deux composantes de couleur : j’ai choisi la rouge et la verte, les deux premières.
+
+Donc si on souhaite dissimuler le caractère « A » (**0100 0001**) dans le pixel de l’image :
+- Sa composante rouge est maintenant égale à **1010 0100** en binaire – **164** en décimal.
+- Sa composante verte est maintenant égale à **1101 0001** en binaire – **209** en décimal.
+- Sa composante bleue est maintenant égale à **1110 0110** en binaire – **230** en décimal.
+
+[*Vidéo de démonstration du programme.*](https://drive.google.com/file/d/1lIqDXIzpYBSUKgPYW-PRYdlsxK459g2M/view?usp=sharing)
+
+*Vidéo de démonstration du programme.*

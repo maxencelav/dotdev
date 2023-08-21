@@ -1,0 +1,126 @@
+---
+layout: /src/layouts/MdxLayout.astro
+title: Les Bâtisseurs
+publishDate: 2019-07-26
+description: Duis ullamco do reprehenderit sunt irure culpa sit. Pariatur duis nostrud laborum consectetur labore Lorem. Duis laborum proident ullamco voluptate deserunt nisi cupidatat sunt velit quis. Exercitation sit cupidatat minim est magna amet eiusmod nisi velit labore magna. Incididunt do duis laborum anim reprehenderit reprehenderit eiusmod nulla nulla officia. Cupidatat nisi amet aute elit esse sunt. Magna eu cupidatat tempor fugiat sint mollit duis sunt dolor.
+legacy: true
+unlisted: true
+---
+
+Ce programme a été réalisé en tant que projet final de ma classe d’**ISN**, en Terminale, pour le Baccalauréat.
+
+Le but du projet est de recréer une version du jeu “Les Bâtisseurs” de Studio Bombyx dans Python.
+
+Je me suis occupé d’une partie majeure du site accompagnant le programme, ainsi que du menu principal, menu des options et des graphismes.
+
+### Site Web
+
+Pour le projet, il était demandé de faire un site web qui permet d’expliquer le fonctionnement du programme et/ou le fonctionnement du jeu.
+
+Voilà donc le résultat :
+
+*Capture d’écran de l’info-site*
+
+Les polices utilisées sont **Peace Sans** et **Kanit** (toutes les deux distribuées sous l'Open Font License). 
+Le contenu est repris du mode d’emploi du jeu “Les Bâtisseurs” par Studio Bombyx, mais repris avec un lexique plus technique.
+
+On a 4 grandes `<div>` avec les paragraphes expliquant les règles à l’intérieur.
+
+Le fond du site est animé, il suit l’ordre suivant : vert, bleu, rouge, jaune.
+
+```css
+body {
+    animation: animationfond 10s infinite;
+}
+
+@keyframes animationfond {
+    0% { background-color: rgb(5, 30, 5); }
+    25% { background-color: rgb(0, 33, 50); }
+    50% { background-color: rgb(35, 0, 10); }
+    75% { background-color: rgb(30, 35, 0); }
+    100% { background-color: rgb(5, 30, 5); }
+}
+```
+
+Les quatre boutons de couleurs sont une **liste à points**, avec des modifications dans le **CSS** pour les afficher en tant que **boutons alignés**. Quand on passe la souris par-dessus, le bouton s’agrandit.
+
+```css
+main > ul {
+    list-style-type: none;
+}
+
+li.listeactions {
+    display : inline-block;
+    /* La liste s'affiche en blocs alignés les uns après les autres */
+    border-width: 2px;
+    padding : 5px;
+    margin : 2px;
+    color: #FFFFFF;
+    transition: transform .3s ease-in-out;
+    /* Quand on passe au survol la transition dure 300ms */
+}
+
+li.listeactions:hover {
+    transform: scale(1.1);
+}
+```
+
+### Animation de lancement du programme
+
+Au lancement du programme, je voulais intégrer le logo du lycée d’une manière simple. J’ai donc vectorisé le logo du lycée à partir d’un de mes bulletins. Une fois le logo vectorisé, j’ai pu l’intégrer au programme, sur un fond noir.
+
+Mais j’ai choisi d’ajouter un bloc noir avec un dégradé au début et à la fin : pour cela j’ai dû trouver une fonction pour calculer les deux dégradés.L’animation du début possède 3 éléments principaux : le **fond**, le **logo**, et le **carré qui servira à construire le dégradé**.
+
+
+Il suffit de changer graduellement l’opacité du dernier carré pour établir le dégradé. Mais de quelle manière ?
+
+Dans la fonction, on a une variable `i` allant de 0 à 420, et selon la valeur de `i`, on change l’opacité du carré.
+
+| i | 11 – 110 | 111 – 249 | 250 – 350 |
+| --- | --- | --- | --- |
+| Opacité | 255 à 0 | 0 | 0 à 255 |
+| Fonction | -2.55 × i + 280 | 0 | ((i – 250) × 255 / 100) |
+
+On se retrouve avec un très court écran noir au début du programme, le logo qui apparaît en blanc, qui reste à l’écran, puis qui repart.
+
+### Menu principal
+
+Pour le menu principal, nous avons décidé de le designer avec des triangles pour lui donner un caractère original.
+
+Comment cela fonctionne-t-il ? On utilise la couleur de chaque triangle pour détecter sur quel bouton on se situe, au lieu des coordonnées de la souris comme un bouton classique.
+
+On associe donc chaque couleur à un bouton et on récupère la couleur du pixel où le curseur est situé.
+
+Toutefois, j’ai rencontré un problème lors de l’implémentation de ce menu : une fois un bouton survolé, comment détecter si l’utilisateur n’est plus sur un bouton ?
+
+Pour ce faire, on peut limiter la vérification de la couleur que dans les trois cas suivants :
+
+1. La souris est dans les triangles du menu
+2. La souris est sous l’hypoténuse des triangles du menu
+3. La souris est dans le carré formé par les triangles
+
+Or les deux premières solutions sont assez pénibles à implémenter : cela impliquerait d’ajouter les coordonnées de chaque pixel du triangle (ou de l’hypoténuse) dans une liste. On se retrouverait donc avec une liste de plus de **550 tuples** ! Ce qui n’est pas utilisable pour le menu du jeu.
+
+J’ai donc décidé d’utiliser la dernière méthode qui est de ne vérifier la couleur que dans le carré formé par les triangles, et donc de remettre le menu par défaut lorsqu’on le quitte. Cela peut paraître gênant, mais lors de l’utilisation du programme, on ne remarque quasiment pas ce détail.
+
+
+*Visualisation des zones de "boutons" du menu*
+
+### Options
+
+Pour les options, on doit pouvoir changer le nom de son joueur, ainsi que sa couleur.
+
+
+*Capture d’écran du menu des options*
+
+Le menu des options est composé de 5 parties interactives :
+
+- le nom du joueur 1
+- le nom du joueur 2
+
+- les couleurs du joueur 1
+- les couleurs du joueur 2
+- le bouton retour
+
+
+*Visualisation des zones de clic interactives*
