@@ -5,11 +5,12 @@ const formattedPublishDate = new Date(frontmatter.publishDate).toLocaleDateStrin
 --- 
 
 <Layout title={frontmatter.title} noTitle={true}>
-    <div class="prose dark:prose-invert md:prose-lg lg:prose-xl mx-auto max-w-none prose-h2:text-5xl prose-code:before:content-none prose-code:after:content-none prose-code:bg-gray-500 prose-code:px-1 prose-code:rounded-sm prose-code:py-1">
-        <h2>{frontmatter.title}</h2>
-        <!-- date -->
-        <p>{formattedPublishDate}</p>
-
+    <div class="prose dark:prose-invert mx-auto max-w-none prose-h2:text-5xl prose-code:before:content-none prose-code:after:content-none prose-code:bg-gray-500 prose-code:px-1 prose-code:rounded-sm prose-code:py-1">
+        <h2 class="mb-4">{frontmatter.title}</h2>
+        <span class="whitespace-nowrap text-sm leading-6">
+        { formattedPublishDate }
+        </span>
+        <hr >
         <slot />
     </div>
 </Layout>
