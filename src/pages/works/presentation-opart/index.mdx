@@ -1,0 +1,39 @@
+---
+layout: /src/layouts/MdxLayout.astro
+title: Présentation OpArt
+publishDate: 2019-02-24
+description: 'Présentation du programme OpArt, réalisé en première en tant que projet final d’ICN.'
+legacy: true
+unlisted: false
+---
+import { Image } from 'astro:assets';
+import InstructionsVasarely from './instructionsVasarely.png'
+import OpartVasarely from './OpartVasarely.mp4'
+import OpartAide from './OpartAide.mp4'
+
+Ce programme a été réalisé en tant que projet final de ma classe d’**ICN**, en première.
+
+Étant un projet de groupe, je ne parlerai en détail que des parties sur lesquelles j’ai travaillé. Le thème était « rendre dynamique une oeuvre de Vasarely et l’accompagner d’une documentation illustrée » – j’ai donc fait une version d’ «Orion-K» modifiable facilement avec les touches du clavier, ainsi qu’une biographie miniature. (avec une fenêtre d’aide)
+
+*Comment m’y suis-je pris ?*<br /> 
+J’ai codé deux grilles : une de 25 carrés sur 25 carrés pour contenir les grands carrés de l’oeuvre, et une autre de 25 carrés sur 25 carrés pour les petits carrés. Au lancement du programme, tous les carrés sont de couleurs aléatoires.
+
+A chaque touche du clavier est assignée une fonction pour changer l’oeuvre, avec la palette de couleur sur les nombres (barre sur le clavier et pavé numérique).
+
+<Image src={InstructionsVasarely} alt="Illustration des actions associées aux touches du clavier" />
+
+
+L’utilisateur peut donc faire son oeuvre personnelle soit en utilisant les touches du clavier pour les actions qu’elles fournissent soient en tapant sur des touches au hasard, pour obtenir une oeuvre plus « chaotique ».
+
+<video width="100%" controls muted>
+<source src={OpartVasarely} type="video/mp4"/>
+</video>
+*Vidéo de démonstration du programme.*
+
+J’ai aussi codé l’agrandissement des images dans la biographie, ainsi que la page d’aide. La page d’aide fonctionne avec une base de données associant une touche au lien vers l’image, ainsi que la description de l’action qu’elle réalise.
+
+<video width="100%" controls muted>
+<source src={OpartAide} type="video/mp4"/>
+</video>
+*Vidéo de démonstration des images et de l’aide du programme.* 
+

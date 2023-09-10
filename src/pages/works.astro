@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-let allPosts = await Astro.glob('../pages/works/*.mdx');
+let allPosts = await Astro.glob('../pages/works/*/*.mdx');
 // order all posts by date, those with no date are put at the end
 allPosts.sort((a, b) => {
   if (a.frontmatter.publishDate && b.frontmatter.publishDate) {
