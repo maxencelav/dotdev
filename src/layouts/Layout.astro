@@ -1,6 +1,8 @@
 ---
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
+import mlPortrait from "/public/assets/img/portrait.png";
+
 
 export interface Props {
 	title: string;
@@ -17,7 +19,7 @@ const { title, noTitle, containerClasses } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Personal website of Maxence Lavenu, a french web developer." />
-		<meta property="og:image" content="https://maxencelavenu.com/assets/img/portrait.png" />
+		<meta property="og:image" content={mlPortrait.src} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
