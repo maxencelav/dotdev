@@ -1,18 +1,24 @@
 ---
 export interface Props {
-    href: string;
-    children: string;
+  href: string;
+  children: string;
+  target?: string;
+  className?: string;
+  download?: string;
 }
-const { href, children } = Astro.props;
+const { href, className, target, download, children } = Astro.props;
 ---
 
 <a
-    href={href}
-    class="inline-block px-3 py-2 font-medium text-center rounded-lg select-none
+  href={href}
+  class="inline-block px-3 py-2 font-medium text-center rounded-lg select-none
         transition duration-200 ease-in-out
-        text-white bg-blue-700 hover:bg-blue-800 
-        focus:ring-4 focus:outline-none focus:ring-blue-300 
+        text-white bg-blue-700 hover:bg-blue-800
+        focus:ring-4 focus:outline-none focus:ring-blue-300
         dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    download={download}
+    target={target}
+    class={className}
 >
-    <slot /> 
+  <slot />
 </a>
