@@ -1,10 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-let allPosts = await Astro.glob('../pages/works/*/*.mdx');
+
+const postImports = import.meta.glob('../pages/works/*/index.mdx', { eager: true });
+let allPosts = Object.entries(postImports).map(([filepath, mod]: [string, any]) => {
+  // Extract URL from file path: "../pages/works/cryptage/index.mdx" -> "/works/cryptage/"
+  const url = filepath.replace('../pages', '').replace('/index.mdx', '/');
+  return { ...mod, url };
+});
 // order all posts by date, those with no date are put at the end
-allPosts.sort((a, b) => {
+allPosts.sort((a: any, b: any) => {
   if (a.frontmatter.publishDate && b.frontmatter.publishDate) {
-    return new Date(b.frontmatter.publishDate) - new Date(a.frontmatter.publishDate);
+    return new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime();
   } else if (a.frontmatter.publishDate) {
     return -1;
   } else if (b.frontmatter.publishDate) {
@@ -14,11 +20,10 @@ allPosts.sort((a, b) => {
   }
 });
 // filter out posts that are unlisted
-allPosts = allPosts.filter((post) => !post.frontmatter.unlisted);
+allPosts = allPosts.filter((post: any) => !post.frontmatter.unlisted);
 
 // setup a date format 
 const dateFormat = new Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
----
 
 <Layout title="Travaux">
   <h2 class="text-5xl font-bold mb-4 text-gray-950 dark:text-gray-50 text-center">Travaux</h2>
