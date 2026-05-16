@@ -1,2 +1,5 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
+body {
+    max-width: 50vh;
+    margin-inline: auto;
+    font-family: system-ui, sans-serif;
+}
