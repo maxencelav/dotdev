@@ -1,5 +1,33 @@
-body {
-    max-width: 50vh;
-    margin-inline: auto;
+:root {
+    --color-primary: #0070f3;
+    --color-secondary: #1c1c1e;
+    --color-background: #ffffff;
+    --color-text: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #0070f3;
+        --color-secondary: #1c1c1e;
+        --color-background: #000000;
+        --color-text: #ffffff;
+    }
+}
+
+html {
+    display: grid;
+    grid-template-columns: [left-column]1fr [content]min(100ch, 100%) [right-column]1fr;
     font-family: system-ui, sans-serif;
+}
+body {
+    grid-column: content;
+    margin: 0;
+    padding: 1rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
 }
