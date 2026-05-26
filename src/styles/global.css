@@ -1,33 +1,53 @@
 :root {
-    --color-primary: #0070f3;
-    --color-secondary: #1c1c1e;
-    --color-background: #ffffff;
-    --color-text: #000000;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-primary: #0070f3;
-        --color-secondary: #1c1c1e;
-        --color-background: #000000;
-        --color-text: #ffffff;
-    }
+    --text: var(--text-900);
+    --background: var(--background-50);
+    --primary: var(--primary-500);
+    --secondary: var(--secondary-500);
+    --accent: var(--accent-500);
 }
 
 html {
-    display: grid;
-    grid-template-columns: [left-column]1fr [content]min(100ch, 100%) [right-column]1fr;
     font-family: system-ui, sans-serif;
 }
+
 body {
-    grid-column: content;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    width: 100%;
     margin: 0;
-    padding: 1rem;
-    background-color: var(--color-background);
-    color: var(--color-text);
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
 a {
-    color: var(--color-primary);
+    color: var(--primary);
     text-decoration: underline;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 72rem;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 0.5rem;
+    z-index: 20;
+}
+
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+    .page-wrapper { padding-inline: 4rem; }
+    main { padding: 2rem 4rem; }
 }

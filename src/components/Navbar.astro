@@ -1,19 +1,47 @@
----
-
----
-<!-- make it sticky and centered -->
-<header class="sticky z-50 top-0 px-4 py-3 bg-white/30 text-gray-700 dark:bg-gray-900/30 dark:text-gray-100 backdrop-blur-xl border-b border-gray-200/30 dark:border-gray-800/30  shadow-lg">
-    <!-- afficher le h1 que si on est pas sur index -->
-    <nav class="flex flex-row items-center justify-between max-w-6xl w-full mx-auto">
-        <h1 class="w-auto font-bold text-2xl tracking-tight"><a href="/">Maxence Lavenu</a></h1>
-        <div>
-            <a href="/works">Travaux</a>
-            <!-- 
-                <span class="mx-2 opacity-50">•</span>
-                <a href="/blog">Blog</a> 
-            -->
-            <!-- <span class="mx-2 opacity-50">•</span>
-            <a href="/projects">Projets</a> -->
-        </div>
+<header>
+    <nav aria-label="Navigation principale">
+        <h1><a href="/">Maxence Lavenu</a></h1>
+        <ul>
+            <li><a href="/who">À propos</a></li>
+            <li><a href="/writing">Blog</a></li>
+            <li><a href="/projects">Projets</a></li>
+        </ul>
     </nav>
 </header>
+
+<style>
+  header {
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    padding: 0.75rem 1rem;
+    background-color: color-mix(in oklch, var(--background-50) 30%, transparent);
+    color: var(--text-700);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid color-mix(in oklch, var(--text-200) 30%, transparent);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 72rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+  }
+</style>

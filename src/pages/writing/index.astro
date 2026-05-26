@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const writings = await getCollection('writing');
+---
+
+<Layout title="Écrits">
+    <h1>Écrits</h1>
+    <p>Voici une sélection de mes écrits, couvrant divers sujets liés au développement web, à la technologie et à l'informatique en général. Ces articles reflètent mes réflexions, mes expériences et mes connaissances dans le domaine du développement web.</p>
+    <ul>
+        {writings.map((writing) => (
+            <li>
+                <a href={`/writing/${writing.id.replace(/\.mdx$/, '')}`}>{writing.data.title}</a>
+                <p>{writing.data.description}</p>
+            </li>
+        ))}
+    </ul>
+</Layout>
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li + li {
+    margin-top: 1rem;
+  }
+  li a {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  li a:hover {
+    text-decoration: underline;
+  }
+  li p {
+    color: var(--text-600);
+  }
+</style>

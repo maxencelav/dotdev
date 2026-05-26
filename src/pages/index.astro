@@ -1,13 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LinkButton from '../components/LinkButton.astro';
 import { Image } from 'astro:assets';
 import mlPortrait from "/public/assets/img/portrait.png";
 ---
 
-<Layout title="Maxence Lavenu" containerClasses="flex align-center">
-	<h2>Bonjour ! 👋</h2>
-	<p>Détenteur d’un titre d'<strong>Analyste développeur d'applications informatiques</strong> (obtenu à la <a href="https://codingfactory.fr/" target="_blank">Coding Factory by ESIEE-IT</a>), je suis actuellement développeur front-end chez <a href="https://wshop.com/" target="_blank">W Unified Group</a>.</p>
-	<Image src={mlPortrait} fetchpriority="high" alt="Maxence Lavenu" class="rounded-full h-full w-full object-cover select-none" width="384" height="384" />
+<Layout title="Maxence Lavenu">
+	<div class="home">
+		<div>
+			<h2>Bonjour ! 👋</h2>
+			<p>Détenteur d&rsquo;un titre d'<strong>Analyste développeur d'applications informatiques</strong> (obtenu à la <a href="https://codingfactory.fr/" target="_blank">Coding Factory by ESIEE-IT</a>), je suis actuellement développeur front-end chez <a href="https://wshop.com/" target="_blank">W Unified Group</a>.</p>
+		</div>
+		<Image src={mlPortrait} fetchpriority="high" alt="Maxence Lavenu" width="384" height="384" />
+	</div>
 </Layout>
 
+<style>
+  .home {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .home img {
+    border-radius: 9999px;
+    object-fit: cover;
+    user-select: none;
+    max-width: 384px;
+  }
+</style>

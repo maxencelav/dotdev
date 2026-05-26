@@ -1,0 +1,128 @@
+.prose {
+  --prose-body: var(--text-700);
+  --prose-heading: var(--text-900);
+  --prose-link: var(--text-800);
+  --prose-code-bg: var(--text-200);
+  --prose-code-text: var(--text-800);
+  --prose-hr: var(--text-400);
+  --prose-strong: var(--text-900);
+  --prose-meta: var(--text-500);
+
+  color: var(--prose-body);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--prose-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.prose h1 { font-size: 2.5rem; }
+.prose h2 { font-size: 3rem; line-height: 1; }
+.prose h3 { font-size: 1.5rem; }
+.prose h4 { font-size: 1.125rem; }
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose strong {
+  color: var(--prose-strong);
+  font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--prose-hr);
+  margin: 2em 0;
+}
+
+.prose code {
+  background-color: var(--prose-code-bg);
+  color: var(--prose-code-text);
+  padding: 0.125em 0.25em;
+  border-radius: 0.125rem;
+  font-size: 0.875em;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose pre {
+  background-color: var(--background-100);
+  color: var(--text-800);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.25em;
+  font-size: 0.875em;
+  line-height: 1.5;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: var(--prose-body);
+  font-style: italic;
+}
+
+.prose img,
+.prose video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border-radius: 0.5rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.875em;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--prose-hr);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.prose th {
+  background-color: var(--background-100);
+  font-weight: 600;
+}
