@@ -1,24 +1,68 @@
-<footer class="text-center py-8 text-opacity-50 hover:text-opacity-100 transition-opacity duration-300 flex flex-row flex-wrap justify-between items-center">
-    <hr class="mx-auto mb-4 border-gray-600 dark:border-gray-400 opacity-50 flex-grow w-full" />
-    <div class="w-full mb-3 md:w-auto md:mb-auto">
-        <a href="https://github.com/maxencelav" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">
-            GitHub
-        </a>
-        <span class="mx-2 opacity-50">•</span>
-        <a href="https://twitter.com/maxence_lav" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">
-           Twitter
-        </a>
-        <span class="mx-2 opacity-50">•</span>
-        <a href="https://www.linkedin.com/in/maxence-lavenu/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">
-            LinkedIn
-        </a>
-        <span class="mx-2 opacity-50">•</span>
-        <a href="mailto:maxence.lavenu@outlook.fr" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">
-            Email
-        </a>
+<footer>
+    <hr />
+    <div class="links">
+        <a href="https://github.com/maxencelav" target="_blank">GitHub</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://www.linkedin.com/in/maxence-lavenu/" target="_blank">LinkedIn</a>
+        <span aria-hidden="true">•</span>
+        <a href="mailto:maxence.lavenu@outlook.fr" target="_blank">Email</a>
     </div>
-    
-    <div class="w-full md:w-auto">
-        © {new Date().getFullYear()} Maxence Lavenu
+    <div class="copy">
+        &copy; {new Date().getFullYear()} Maxence Lavenu
     </div>
 </footer>
+
+<style>
+  footer {
+    text-align: center;
+    padding-block: 2rem;
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+
+  footer:hover {
+    opacity: 1;
+  }
+
+  footer hr {
+    margin-inline: auto;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    flex: 1;
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--text-600);
+  }
+
+  footer .links {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  footer .copy {
+    width: 100%;
+  }
+
+  footer a {
+    color: var(--text-600);
+    transition: color 0.3s ease;
+  }
+
+  footer a:hover {
+    color: var(--text-800);
+  }
+
+  footer span {
+    margin-inline: 0.5rem;
+    opacity: 0.5;
+  }
+
+  @media (min-width: 768px) {
+    footer .links { width: auto; margin-bottom: 0; }
+    footer .copy { width: auto; }
+  }
+</style>

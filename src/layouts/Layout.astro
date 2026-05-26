@@ -2,22 +2,21 @@
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import mlPortrait from "/public/assets/img/portrait.png";
-
+import "../styles/index.css";
 
 export interface Props {
 	title: string;
-	// make noTitle optional and default to false
 	noTitle?: boolean;
-	containerClasses?: string;
 }
 
-const { title, noTitle, containerClasses } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="color-scheme" content="light dark" />
 		<meta name="description" content="Personal website of Maxence Lavenu, a french web developer." />
 		<meta property="og:image" content={mlPortrait.src} />
 		<meta name="viewport" content="width=device-width" />
@@ -25,17 +24,13 @@ const { title, noTitle, containerClasses } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title == "Maxence Lavenu" ? "Maxence Lavenu" : title + " - Maxence Lavenu"}</title>
 	</head>
-	<body class="flex flex-col min-h-screen justify-center mx-auto w-full bg-gray-50 dark:bg-gray-950 overflow-x-hidden">
+	<body>
 		<Navbar/>
-		<img src="/assets/img/gradient.svg" class="-bottom-1/3 -right-1/3 object-cover z-10 w-screen opacity-0 dark:opacity-25 fixed" alt=""/>
-
-		<div class="flex flex-col text-gray-600 dark:text-gray-400 grow max-w-6xl w-full mx-auto px-2 z-20 sm:px-16">
-			<!-- add rounded bottom radius -->
-			<main class={containerClasses + " " +"grow px-4 py-8 sm:px-16 sm:py-8 w-full max-w-6xl mx-auto"}>
+		<div class="page-wrapper">
+			<main>
 				<slot />
 			</main>
 			<Footer/>
 		</div>
-
 	</body>
 </html>

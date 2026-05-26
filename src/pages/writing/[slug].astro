@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const writings = await getCollection('writing');
+  return writings.map((writing) => ({
+    params: { slug: writing.id.replace(/\.mdx$/, '') },
+  }));
+}
+
+const { slug } = Astro.params;
+const [entry] = await getCollection('writing', (e) => e.id.replace(/\.mdx$/, '') === slug);
+const { Content } = await render(entry);
+const formattedPublishDate = new Date(entry.data.publishDate).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title={entry.data.title}>
+  <article class="prose">
+    <h2>{entry.data.title}</h2>
+    <span class="meta">{formattedPublishDate}</span>
+    <hr />
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  .meta {
+    white-space: nowrap;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+  h2 {
+    margin-bottom: 1rem;
+  }
+</style>

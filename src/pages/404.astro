@@ -1,13 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import LinkButton from '../components/LinkButton.astro';
-import { Image } from 'astro:assets';
 ---
 
-<Layout title="404" containerClasses="flex align-center w-full">
-    <div class="flex flex-col items-center justify-center text-center w-full">
-        <h2 class="text-7xl font-bold text-center text-white mb-16">Oups ! 😅</h2>
-        <p class="mb-8">Il semblerait que la page que vous cherchez n'existe pas.</p>
-        <LinkButton href="/" >Retour à l'accueil</LinkButton>
+<Layout title="404">
+    <div class="not-found">
+        <h2>Oups ! 😅</h2>
+        <p>Il semblerait que la page que vous cherchez n&rsquo;existe pas.</p>
+        <LinkButton href="/">Retour à l'accueil</LinkButton>
     </div>
 </Layout>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  .not-found h2 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    color: #fff;
+  }
+  .not-found p {
+    margin-bottom: 2rem;
+  }
+</style>
