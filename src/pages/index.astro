@@ -1,28 +1,75 @@
 ---
+import { PUBLIC_EMAIL } from 'astro:env/client';
 import Layout from '../layouts/Layout.astro';
-import LinkButton from '../components/LinkButton.astro';
+import Button from '../components/Button.astro';
+import ContactSplitButton from '../components/ContactSplitButton.astro';
+import InlineLink from '../components/InlineLink.astro';
 import { Image } from 'astro:assets';
 import mlPortrait from "/public/assets/img/portrait.png";
+import resumePDF from "/public/assets/docs/Maxence_Lavenu_CV.pdf";
+import cv from '../data/cv-fr.json';
+
+const experiences = cv.experiences;
+const education = cv.education;
 ---
 
-<Layout title="Maxence Lavenu" containerClasses="flex align-center">
+<Layout title="Maxence Lavenu" containerClasses="flex flex-col gap-16">
+	<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+		<div class="basis-2/3">
+			<hgroup class="mb-4">
+				<h1 class="text-5xl font-bold mb-2 text-gray-950 dark:text-gray-50">Maxence Lavenu</h1>
+				<p class="text-xl font-medium text-primary-700 dark:text-primary-400">Développeur front-end</p>
+			</hgroup>
+			<p class="mb-3 text-base/7">Détenteur d’un titre d'<strong>Analyste développeur d'applications informatiques</strong> (obtenu à la <InlineLink href="https://codingfactory.fr/" target="_blank">Coding Factory by ESIEE-IT</InlineLink>), je suis actuellement développeur front-end chez <InlineLink href="https://wshop.com/" target="_blank">WSHOP</InlineLink>.</p>
 
-	<!-- petite forme floue à la tailwind avec ma tête à gauche -->
-		
-		<div class="flex flex-col md:flex-row items-center justify-between gap-8">
-			<div class="basis-2/3">
-				<h2 class="text-5xl font-bold mb-4 text-gray-950 dark:text-gray-50">Bonjour ! 👋</h2>
-				<p class="mb-3 text-base/7">Détenteur d’un titre d'<strong>Analyste développeur d'applications informatiques</strong> (obtenu à la <a href="https://codingfactory.fr/" target="_blank" class="text-blue-500 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600">Coding Factory by ESIEE-IT</a>), je suis actuellement développeur front-end chez <a href="https://wshop.com/" target="_blank" class="text-blue-500 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600">WSHOP</a>.</p>
-				
-				<div class="flex flex-col md:flex-row gap-4">
-					<LinkButton href="mailto:maxence.lavenu@outlook.fr">Contactez-moi</LinkButton>
-					<LinkButton href="/cv">Téléchargez mon CV</LinkButton>
-					<!-- <LinkButton href="/cv">Téléchargez mon CV</LinkButton> -->
-				</div>
-			</div>
-			<div class="basis-1/3 max-w-1/2 md:max-w-none">
-				<Image src={mlPortrait} alt="Maxence Lavenu" class="rounded-full h-full w-full object-cover select-none" width="384" height="384" />
+			<div class="flex flex-col md:flex-row gap-4">
+				<ContactSplitButton email={PUBLIC_EMAIL} />
+				<Button href={resumePDF} download="Maxence_Lavenu_CV.pdf" target="_blank" variant="secondary">Téléchargez mon CV</Button>
 			</div>
 		</div>
+		<div class="basis-1/3 max-w-1/2 md:max-w-none">
+			<Image src={mlPortrait} alt="Maxence Lavenu" class="h-full w-full object-cover select-none" width="384" height="384" fetchpriority="high" loading="eager"/>
+		</div>
+	</div>
+
+	{experiences.length > 0 && (
+		<section>
+			<h2 class="text-3xl font-bold mb-6 text-gray-950 dark:text-gray-50">Expérience</h2>
+			<ol class="flex flex-col gap-8">
+				{experiences.map((exp) => (
+					<li>
+						<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+							<h3 class="text-xl font-semibold text-gray-950 dark:text-gray-50">
+								{exp.position}
+								<span class="font-normal text-gray-500 dark:text-gray-400"> · {exp.company}</span>
+							</h3>
+							<span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{exp.date}</span>
+						</div>
+						<ul class="list-disc list-outside ml-5 space-y-1.5 text-base/7 [&_a]:text-primary-700 [&_a]:underline [&_a]:decoration-primary-700/40 [&_a]:hover:text-primary-800 dark:[&_a]:text-primary-400 dark:[&_a]:decoration-primary-400/40 dark:[&_a]:hover:text-primary-600 [&_a]:transition-colors [&_a]:duration-200">
+							{exp.highlights.map((h) => <li set:html={h.text} />)}
+						</ul>
+					</li>
+				))}
+			</ol>
+		</section>
+	)}
+
+	{education.length > 0 && (
+		<section>
+			<h2 class="text-3xl font-bold mb-6 text-gray-950 dark:text-gray-50">Formation</h2>
+			<ol class="flex flex-col gap-4">
+				{education.map((item) => (
+					<li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+						<div>
+							<h3 class="text-xl font-semibold text-gray-950 dark:text-gray-50">{item.title}</h3>
+							<p class="text-gray-500 dark:text-gray-400">{item.institution}</p>
+							{item.summary && <p class="text-sm mt-1">{item.summary}</p>}
+						</div>
+						<span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{item.date}</span>
+					</li>
+				))}
+			</ol>
+		</section>
+	)}
 </Layout>
 

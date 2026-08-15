@@ -1,0 +1,24 @@
+---
+import { externalRel } from '../utils/links';
+
+export interface Props {
+  href: string;
+  target?: string;
+  className?: string;
+}
+const { href, target, className } = Astro.props;
+---
+
+<a
+  href={href}
+  target={target}
+  rel={externalRel(target)}
+  class:list={[
+    "text-primary-700 underline decoration-primary-700/40 hover:text-primary-800 hover:decoration-primary-800",
+    "dark:text-primary-400 dark:decoration-primary-400/40 dark:hover:text-primary-600 dark:hover:decoration-primary-600",
+    "transition-colors duration-200 ease-in-out",
+    className,
+  ]}
+>
+  <slot />
+</a>

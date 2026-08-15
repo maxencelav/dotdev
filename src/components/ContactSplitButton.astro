@@ -1,0 +1,82 @@
+---
+import { randomUUID } from 'node:crypto';
+import CopyIcon from '../icons/CopyIcon.astro';
+import CheckIcon from '../icons/CheckIcon.astro';
+
+export interface Props {
+  email: string;
+  className?: string;
+}
+const { email, className } = Astro.props;
+
+// A per-instance id lets this component be rendered more than once on the
+// same page: each instance gets its own inline script (via define:vars,
+// which Astro never bundles/dedupes) scoped to its own DOM node, instead of
+// every instance sharing one global ".copy-email-btn" selector.
+const buttonId = `copy-email-btn-${randomUUID()}`;
+const statusId = `copy-email-status-${randomUUID()}`;
+---
+
+<div
+  role="group"
+  aria-label="Actions de contact"
+  class:list={[
+    "inline-flex items-stretch select-none",
+    "text-white bg-primary-700 dark:bg-primary-600",
+    className,
+  ]}
+>
+  <a
+    href={`mailto:${email}`}
+    class="px-3 py-2 font-medium text-center hover:bg-primary-800 dark:hover:bg-primary-700 transition duration-200 ease-in-out"
+  >
+    Contactez-moi
+  </a>
+  <button
+    id={buttonId}
+    type="button"
+    data-copy-email={email}
+    aria-label="Copier l'adresse email"
+    aria-describedby={statusId}
+    title="Copier l'adresse email"
+    class="relative px-3 py-2 border-l border-white/25 hover:bg-primary-800 dark:hover:bg-primary-700 transition duration-200 ease-in-out"
+  >
+    <CopyIcon data-icon="copy" aria-hidden="true" focusable="false" class="w-4 h-4" />
+    <CheckIcon data-icon="check" aria-hidden="true" focusable="false" class="w-4 h-4 hidden" />
+    <span id={statusId} class="sr-only" role="status" aria-live="polite" aria-atomic="true"></span>
+  </button>
+</div>
+
+<script define:vars={{ buttonId }}>
+  const button = document.getElementById(buttonId);
+
+  if (button) {
+    let resetTimeout;
+    const status = button.querySelector(".sr-only");
+
+    button.addEventListener("click", async () => {
+      const email = button.dataset.copyEmail;
+      if (!email) return;
+
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        if (status) status.textContent = "Échec de la copie de l'adresse email";
+        return;
+      }
+
+      const copyIcon = button.querySelector('[data-icon="copy"]');
+      const checkIcon = button.querySelector('[data-icon="check"]');
+      copyIcon?.classList.add("hidden");
+      checkIcon?.classList.remove("hidden");
+      if (status) status.textContent = "Adresse email copiée";
+
+      clearTimeout(resetTimeout);
+      resetTimeout = setTimeout(() => {
+        copyIcon?.classList.remove("hidden");
+        checkIcon?.classList.add("hidden");
+        if (status) status.textContent = "";
+      }, 2000);
+    });
+  }
+</script>
