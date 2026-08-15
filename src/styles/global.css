@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-noto-sans), var(--font-noto-color-emoji), ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary-50: oklch(96% 0.025 53);
+  --color-primary-100: oklch(91% 0.05 53);
+  --color-primary-300: oklch(84% 0.1 53);
+  --color-primary-400: oklch(79% 0.15 53);
+  --color-primary-500: oklch(73.19% 0.186 53);
+  --color-primary-600: oklch(64% 0.19 53);
+  --color-primary-700: oklch(55% 0.175 53);
+  --color-primary-800: oklch(45% 0.15 53);
+
+  --color-gray-50: oklch(97% 0.012 53);
+  --color-gray-100: oklch(94% 0.016 53);
+  --color-gray-200: oklch(89% 0.02 53);
+  --color-gray-300: oklch(82% 0.022 53);
+  --color-gray-400: oklch(68% 0.024 53);
+  --color-gray-500: oklch(55% 0.026 53);
+  --color-gray-600: oklch(45% 0.028 53);
+  --color-gray-700: oklch(36% 0.035 53);
+  --color-gray-800: oklch(28% 0.05 53);
+  --color-gray-900: oklch(26% 0.09 52.98);
+  /* Same technique as the screen-preview backdrop in maxencelav/cv/style.css */
+  --color-gray-950: color-mix(in oklch, var(--color-primary-500) 20%, black);
+}
+
+.prose {
+  --tw-prose-body: var(--color-gray-700);
+  --tw-prose-headings: var(--color-gray-950);
+  --tw-prose-lead: var(--color-gray-600);
+  --tw-prose-links: var(--color-primary-600);
+  --tw-prose-bold: var(--color-gray-950);
+  --tw-prose-counters: var(--color-gray-500);
+  --tw-prose-bullets: var(--color-gray-300);
+  --tw-prose-hr: var(--color-gray-200);
+  --tw-prose-quotes: var(--color-gray-950);
+  --tw-prose-quote-borders: var(--color-gray-200);
+  --tw-prose-captions: var(--color-gray-500);
+  --tw-prose-kbd: var(--color-gray-950);
+  --tw-prose-code: var(--color-gray-950);
+  --tw-prose-pre-code: var(--color-gray-200);
+  --tw-prose-pre-bg: var(--color-gray-800);
+  --tw-prose-th-borders: var(--color-gray-300);
+  --tw-prose-td-borders: var(--color-gray-200);
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose {
+    --tw-prose-body: var(--color-gray-300);
+    --tw-prose-headings: var(--color-gray-50);
+    --tw-prose-lead: var(--color-gray-400);
+    --tw-prose-links: var(--color-primary-400);
+    --tw-prose-bold: var(--color-gray-50);
+    --tw-prose-counters: var(--color-gray-400);
+    --tw-prose-bullets: var(--color-gray-600);
+    --tw-prose-hr: var(--color-gray-700);
+    --tw-prose-quotes: var(--color-gray-100);
+    --tw-prose-quote-borders: var(--color-gray-700);
+    --tw-prose-captions: var(--color-gray-400);
+    --tw-prose-kbd: var(--color-gray-50);
+    --tw-prose-code: var(--color-gray-50);
+    --tw-prose-pre-code: var(--color-gray-300);
+    --tw-prose-pre-bg: var(--color-gray-900);
+    --tw-prose-th-borders: var(--color-gray-600);
+    --tw-prose-td-borders: var(--color-gray-700);
+  }
+}

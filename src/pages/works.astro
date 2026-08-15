@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-let allPosts = await Astro.glob('../pages/works/*/*.mdx');
+import WorksHeader from '../components/WorksHeader.astro';
+let allPosts = Object.values(import.meta.glob('../pages/works/*/*.mdx', { eager: true }));
 // order all posts by date, those with no date are put at the end
 allPosts.sort((a, b) => {
   if (a.frontmatter.publishDate && b.frontmatter.publishDate) {
@@ -21,10 +22,12 @@ const dateFormat = new Intl.DateTimeFormat('fr-FR', { year: 'numeric', month: 'l
 ---
 
 <Layout title="Travaux">
+  <WorksHeader href="/" label="Maxence Lavenu" />
+
   <h2 class="text-5xl font-bold mb-4 text-gray-950 dark:text-gray-50 text-center">Travaux</h2>
 
   <ul>
-    {allPosts.map((post) => <li class="hover:bg-gray-200/50 dark:hover:bg-gray-900 transition-colors mb-3 rounded-lg px-6 py-4"><a href={post.url}>
+    {allPosts.map((post) => <li class="hover:bg-gray-200/50 dark:hover:bg-gray-900 transition-colors mb-3 px-6 py-4"><a href={post.url}>
       <div class="mb-2">
         <h3 class="text-3xl font-semibold mb-1 text-gray-950 dark:text-gray-50">{post.frontmatter.title}</h3>
         <span class="whitespace-nowrap text-sm leading-6">
